@@ -1,0 +1,45 @@
+import java.util.Scanner;
+public class Bar_Graph{
+	public static void main(String [] args){
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Number of values to graph: ");
+		int n = sc.nextInt();
+		int[] array = new int[n];
+		int maxVal = -1;
+		for(int a = 0; a < n; a++){
+			array[a] = sc.nextInt();
+			if(maxVal == -1||maxVal < array[a]){
+				maxVal = array[a];
+			}
+		}
+		System.out.print("Bar graph for ");
+		for(int a = 0; a < n; a++){
+			if(a != n -1){
+			System.out.print(array[a] + " ");}
+			else{
+				System.out.print(array[a]);
+			}
+		}
+		System.out.println(":");
+		char[][] cols = new char[(int) maxVal][n];
+		for(int i = (int)maxVal-1; i >= 0; i--){	
+			for(int j = 0; j < n; j++){
+				if(i < array[j]){
+				cols[i][j] = '#';}
+				else{
+					cols[i][j] = ' ';
+				}
+				System.out.print("  " + cols[i][j]);
+			}
+			System.out.println();
+		}
+		for(int l = 0; l < n * 3; l++){
+			System.out.print("-");
+		}
+			System.out.println();
+			for(int a = 0; a < n; a++){
+				System.out.printf(" %2d", array[a]);
+			}
+		System.out.println();	
+	}
+}
